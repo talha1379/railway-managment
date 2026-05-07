@@ -1,26 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PublicLayout } from "@/components/layout/PublicLayout";
+import { Hero } from "@/components/home/Hero";
+import { LiveStatus } from "@/components/home/LiveStatus";
+import { SearchForm } from "@/components/home/SearchForm";
+import { Features } from "@/components/home/Features";
+import { PopularRoutes } from "@/components/home/PopularRoutes";
+import { Testimonials } from "@/components/home/Testimonials";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "RailNova — Modern Railway Terminal" },
+      { name: "description", content: "Real-time schedules, instant booking, and a beautifully crafted terminal experience." },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <PublicLayout>
+      <Hero />
+      <SearchForm />
+      <LiveStatus />
+      <Features />
+      <PopularRoutes />
+      <Testimonials />
+    </PublicLayout>
+  );
 }
